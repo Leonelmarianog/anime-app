@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import useFetchOnChange from "../hooks/simple-fetch/useFetchOnChange.js";
+/* import useFetchOnChange from "../hooks/simple-fetch/useFetchOnChange.js"; */
+import useFetchOnChange from "../hooks/fetch-with-reducer/useFetchOnChange.js";
 import SearchTab from "./SearchTab.jsx";
 import CardList from "./CardList.jsx";
 import getData from "../helpers/api.js";
