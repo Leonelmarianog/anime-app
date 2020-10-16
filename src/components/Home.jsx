@@ -4,24 +4,23 @@ import React, { useState } from "react";
 import useFetchOnChange from "../hooks/fetch-with-cache/useFetchOnChange.js";
 import SearchTab from "./SearchTab.jsx";
 import CardList from "./CardList.jsx";
-import getData from "../helpers/api.js";
-import fromJSONToEntity from "../helpers/fromJSONToEntity.js";
+import jikanApi from "../helpers/api.js";
+import { fromJSONToCardEntity } from "../helpers/mappers.js";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { data, loading, error } = useFetchOnChange(
-    getData,
+    jikanApi,
     searchTerm,
-    fromJSONToEntity,
+    fromJSONToCardEntity,
     500
   );
-
   return (
     <React.Fragment>
       <SearchTab value={searchTerm} setSearchTerm={setSearchTerm} />
       {loading && <h2>Loading...</h2>}
       {data && <CardList data={data} />}
-      {error && <h2>{error}</h2>}
+      {error && <h2>{error.message}</h2>}
     </React.Fragment>
   );
 };

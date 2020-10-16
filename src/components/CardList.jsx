@@ -14,7 +14,12 @@ const List = styled.div`
 
 const CardList = ({ data }) => {
   const cards = data.map((item, index) => (
-    <Card key={`card-${index + 1}`} title={item.title} image={item.image_url} />
+    <Card
+      key={`card-${index + 1}`}
+      animeId={item.id}
+      title={item.title}
+      image={item.imageUrl}
+    />
   ));
   return <List>{cards}</List>;
 };

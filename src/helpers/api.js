@@ -1,17 +1,33 @@
-const BASE_URL = "https://api.jikan.moe/v3/search/anime?q=";
-
-/**
- * @param {String} searchTerm
- * @param {Function} fetchMethod
- * @returns {Array<JSON>}
- */
-async function getData(searchTerm, fetchMethod) {
-  const response = await fetchMethod(`${BASE_URL}/${searchTerm}`);
-  if (!response.ok) {
-    throw new Error("Oops! Something went wrong!");
+class JikanApi {
+  constructor() {
+    this.BASE_URL = "https://api.jikan.moe/v3";
   }
-  const data = await response.json();
-  return data.results;
+
+  async getAnimeBySearchTerm(searchTerm) {
+    const url = `${this.BASE_URL}/search/anime?q=${searchTerm}`;
+    return await this.getData(url);
+  }
+
+  async getAnimeById(animeId) {
+    const url = `${this.BASE_URL}/anime/${animeId}`;
+    return await this.getData(url);
+  }
+
+  async getData(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Oops! Something went wrong!");
+    }
+    const data = await response.json();
+
+    if (data.results) {
+      return data.results;
+    } else {
+      return data;
+    }
+  }
 }
 
-export default getData;
+const jikanApi = new JikanApi();
+
+module.exports = jikanApi;

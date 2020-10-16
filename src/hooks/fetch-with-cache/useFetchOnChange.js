@@ -20,7 +20,7 @@ const fetchReducer = (state, action) => {
   }
 };
 
-const useFetchOnChange = (dataFetcher, searchTerm, mapper, timeout) => {
+const useFetchOnChange = (animeApi, searchTerm, mapper, timeout) => {
   const cache = useContext(CacheContext);
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
@@ -35,7 +35,7 @@ const useFetchOnChange = (dataFetcher, searchTerm, mapper, timeout) => {
         dispatch({ type: "LOAD" });
 
         try {
-          const data = await dataFetcher(searchTerm, fetch);
+          const data = await animeApi.getAnimeBySearchTerm(searchTerm);
           const results = data.map((item) => mapper(item));
           dispatch({ type: "SUCCESS", payload: results });
           cache.dispatch({
@@ -53,7 +53,7 @@ const useFetchOnChange = (dataFetcher, searchTerm, mapper, timeout) => {
     return () => {
       clearTimeout(timerId);
     };
-  }, [dataFetcher, searchTerm, mapper, timeout, cache]);
+  }, [animeApi, searchTerm, mapper, timeout, cache]);
 
   return state;
 };

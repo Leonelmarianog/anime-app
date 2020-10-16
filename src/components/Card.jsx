@@ -43,9 +43,9 @@ const Image = styled.img`
   width: 100%;
 `;
 
-const Card = ({ title, image }) => (
+const Card = ({ animeId, title, image }) => (
   <Wrapper>
-    <CardBackgroundLink to={`/home/anime/${title}`}>
+    <CardBackgroundLink to={`/home/anime/${animeId}`}>
       <Title>{title}</Title>
       <Image src={image} alt={title} />
     </CardBackgroundLink>
