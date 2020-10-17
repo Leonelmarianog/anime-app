@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useContext } from "react";
-import { CacheContext } from "../../components/CacheContext.jsx";
+import { CacheContext } from "../../components/CacheProvider.jsx";
 
 const initialState = { data: null, loading: false, error: null };
 

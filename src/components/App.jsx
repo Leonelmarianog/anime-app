@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { CacheProvider } from "./CacheContext.jsx";
+import { CacheProvider } from "./CacheProvider.jsx";
 import GlobalStyles from "./GlobalStyles.jsx";
 import BaseLayout from "./BaseLayout.jsx";
 import Home from "./Home.jsx";
