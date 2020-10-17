@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Card from "./Card.jsx";
 
@@ -22,6 +23,10 @@ const CardList = ({ data }) => {
     />
   ));
   return <List>{cards}</List>;
+};
+
+CardList.propTypes = {
+  data: PropTypes.object,
 };
 
 export default CardList;

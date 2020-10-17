@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Input = styled.input`
   background-color: #262626;
@@ -23,5 +24,10 @@ const SearchTab = ({ value, setSearchTerm }) => (
     onChange={(event) => setSearchTerm(event.target.value)}
   />
 );
+
+SearchTab.propTypes = {
+  value: PropTypes.number,
+  setSearchTerm: PropTypes.func,
+};
 
 export default SearchTab;

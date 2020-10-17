@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -51,5 +52,11 @@ const Card = ({ animeId, title, image }) => (
     </CardBackgroundLink>
   </Wrapper>
 );
+
+Card.propTypes = {
+  animeId: PropTypes.number,
+  title: PropTypes.string,
+  image: PropTypes.string,
+};
 
 export default Card;
