@@ -26,7 +26,7 @@ const SearchTab = ({ value, setSearchTerm }) => (
 );
 
 SearchTab.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   setSearchTerm: PropTypes.func,
 };
 

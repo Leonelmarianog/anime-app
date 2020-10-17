@@ -26,7 +26,7 @@ const CardList = ({ data }) => {
 };
 
 CardList.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
 };
 
 export default CardList;
