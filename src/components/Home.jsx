@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import useFetchOnChange from "../hooks/fetch-with-cache/useFetchOnChange.js";
 import SearchTab from "./SearchTab.jsx";
 import CardList from "./CardList.jsx";
-import jikanApi from "../helpers/api.js";
-import { fromJSONToCardEntity } from "../helpers/mappers.js";
+import jikanApi from "../js/api/api.js";
+import { fromJSONToCardEntity } from "../js/mapper/mappers.js";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");

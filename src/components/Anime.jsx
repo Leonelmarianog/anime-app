@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import useInstantFetch from "../hooks/instant-fetch/useInstantFetch.js";
-import jikanApi from "../helpers/api.js";
-import { fromJSONToAnimeEntity } from "../helpers/mappers";
+import jikanApi from "../js/api/api.js";
+import { fromJSONToAnimeEntity } from "../js/mapper/mappers";
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
-import Card from "./Card";
-import Anime from "./Anime";
+import Card from "../entity/Card";
+import Anime from "../entity/Anime";
 
 /**
  * @param {Object}
