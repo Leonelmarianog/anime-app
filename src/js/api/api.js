@@ -30,4 +30,4 @@ class JikanApi {
 
 const jikanApi = new JikanApi();
 
-module.exports = jikanApi;
+export default jikanApi;
