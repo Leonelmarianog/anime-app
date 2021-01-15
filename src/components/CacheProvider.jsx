@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer, createContext } from "react";
+import React, { useEffect, useReducer, createContext } from 'react';
 
-const initialValue = JSON.parse(localStorage.getItem("JIKAN_CACHE")) || {};
+const initialValue = JSON.parse(localStorage.getItem('JIKAN_CACHE')) || {};
 
 export const CacheContext = createContext();
 
@@ -8,7 +8,7 @@ const cacheReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "SET_CACHE":
+    case 'SET_CACHE':
       return { ...state, [payload.key]: payload.value };
     default:
       return state;
@@ -21,13 +21,9 @@ export const CacheProvider = ({ children }) => {
   useEffect(() => {
     if (Object.keys(state).length !== 0) {
       const serializedState = JSON.stringify(state);
-      localStorage.setItem("JIKAN_CACHE", serializedState);
+      localStorage.setItem('JIKAN_CACHE', serializedState);
     }
   }, [state]);
 
-  return (
-    <CacheContext.Provider value={{ state, dispatch }}>
-      {children}
-    </CacheContext.Provider>
-  );
+  return <CacheContext.Provider value={{ state, dispatch }}>{children}</CacheContext.Provider>;
 };

@@ -1,5 +1,5 @@
-import { useEffect, useReducer, useContext } from "react";
-import { CacheContext } from "../../components/CacheProvider.jsx";
+import { useEffect, useReducer, useContext } from 'react';
+import { CacheContext } from '../../components/CacheProvider.jsx';
 
 const initialState = { data: null, loading: false, error: null };
 
@@ -7,13 +7,13 @@ const fetchReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "LOAD":
+    case 'LOAD':
       return { ...state, data: null, loading: true, error: null };
-    case "SUCCESS":
+    case 'SUCCESS':
       return { ...state, data: payload, loading: false, error: null };
-    case "FAILURE":
+    case 'FAILURE':
       return { ...state, data: null, loading: false, error: payload };
-    case "CLEAN":
+    case 'CLEAN':
       return { ...state, data: null, loading: false, error: null };
     default:
       return state;
@@ -26,27 +26,27 @@ const useFetchOnChange = (animeApi, searchTerm, mapper, timeout) => {
 
   useEffect(() => {
     if (cache.state[searchTerm]) {
-      dispatch({ type: "SUCCESS", payload: cache.state[searchTerm] });
+      dispatch({ type: 'SUCCESS', payload: cache.state[searchTerm] });
       return;
     }
 
     const timerId = setTimeout(async () => {
       if (searchTerm) {
-        dispatch({ type: "LOAD" });
+        dispatch({ type: 'LOAD' });
 
         try {
           const data = await animeApi.getAnimeBySearchTerm(searchTerm);
           const results = data.map((item) => mapper(item));
-          dispatch({ type: "SUCCESS", payload: results });
+          dispatch({ type: 'SUCCESS', payload: results });
           cache.dispatch({
-            type: "SET_CACHE",
+            type: 'SET_CACHE',
             payload: { key: searchTerm, value: results },
           });
         } catch (error) {
-          dispatch({ type: "FAILURE", payload: error });
+          dispatch({ type: 'FAILURE', payload: error });
         }
       } else {
-        dispatch({ type: "CLEAN" });
+        dispatch({ type: 'CLEAN' });
       }
     }, timeout);
 
