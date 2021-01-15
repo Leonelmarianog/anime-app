@@ -1,56 +1,60 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Wrapper = styled.div`
-  flex: 1 0 30%;
-  margin: 20px 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CardBackgroundLink = styled(Link)`
-  background-color: #303030;
+const CardLink = styled(Link)`
+  text-decoration: none;
+  background-color: var(--primary-color);
   height: 400px;
   width: 250px;
-  color: white;
-  text-decoration: none;
-  text-align: center;
+  margin: 1em;
   border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  box-shadow: 0.15em 0.15em 0.5em 0.15em rgba(0, 0, 0, 0.5);
 
   &:hover img {
-    filter: brightness(0.8);
+    transform: scale(120%);
+  }
+
+  &:hover h2 {
+    color: var(--link-color-hover);
   }
 `;
 
-const Title = styled.h2`
-  height: 100px;
-  color: white;
-  text-decoration: none;
+const TitleContainer = styled.div`
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  padding: 0 1em;
+
+  & > h2 {
+    font-size: var(--font-size);
+    transition: color 0.2s;
+  }
 `;
 
-const Image = styled.img`
-  transition: filter 0.5s;
-  height: 100%;
-  width: 100%;
+const ImageContainer = styled.div`
+  height: 80%;
+  overflow: hidden;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0, 0.55, 0.45, 1);
+  }
 `;
 
 const Card = ({ animeId, title, image }) => (
-  <Wrapper>
-    <CardBackgroundLink to={`/home/anime/${animeId}`}>
-      <Title>{title}</Title>
-      <Image src={image} alt={title} />
-    </CardBackgroundLink>
-  </Wrapper>
+  <CardLink to={`/home/anime/${animeId}`}>
+    <TitleContainer>
+      <h2>{title}</h2>
+    </TitleContainer>
+    <ImageContainer>
+      <img src={image} alt={title} />
+    </ImageContainer>
+  </CardLink>
 );
 
 Card.propTypes = {

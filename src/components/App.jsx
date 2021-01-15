@@ -1,15 +1,10 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import { CacheProvider } from "./CacheProvider.jsx";
-import GlobalStyles from "./GlobalStyles.jsx";
-import BaseLayout from "./BaseLayout.jsx";
-import Home from "./Home.jsx";
-import Anime from "./Anime.jsx";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { CacheProvider } from './CacheProvider.jsx';
+import GlobalStyles from './GlobalStyles.jsx';
+import BaseLayout from './BaseLayout.jsx';
+import Home from './Home.jsx';
+import Anime from './Anime.jsx';
 
 const App = () => (
   <CacheProvider>
@@ -17,13 +12,15 @@ const App = () => (
       <GlobalStyles />
       <BaseLayout>
         <Switch>
-          <Route exact path="/home">
+          <Route exact path='/'>
+            <Redirect to='/home' />
+          </Route>
+          <Route exact path='/home'>
             <Home />
           </Route>
-          <Route path="/home/anime/:animeId">
+          <Route exact path='/home/anime/:animeId'>
             <Anime />
           </Route>
-          <Redirect to="/home" />
         </Switch>
       </BaseLayout>
     </Router>

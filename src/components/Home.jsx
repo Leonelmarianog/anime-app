@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-/* import useFetchOnChange from "../hooks/simple-fetch/useFetchOnChange.js"; */
-/* import useFetchOnChange from "../hooks/fetch-with-reducer/useFetchOnChange.js"; */
-import useFetchOnChange from "../hooks/fetch-with-cache/useFetchOnChange.js";
-import SearchTab from "./SearchTab.jsx";
-import CardList from "./CardList.jsx";
-import jikanApi from "../js/api/api.js";
-import { fromJSONToCardEntity } from "../js/mapper/mappers.js";
+import React, { useState } from 'react';
+import useFetchOnChange from '../hooks/fetch-with-cache/useFetchOnChange.js';
+import SearchTab from './SearchTab.jsx';
+import CardList from './CardList.jsx';
+import jikanApi from '../js/api/api.js';
+import { fromJSONToCardEntity } from '../js/mapper/mappers.js';
 
 const Home = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const { data, loading, error } = useFetchOnChange(
     jikanApi,
     searchTerm,

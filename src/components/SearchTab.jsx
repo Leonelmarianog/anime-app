@@ -1,28 +1,26 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Input = styled.input`
-  background-color: #262626;
+  margin: 2em 0;
   border: none;
-  height: 30px;
-  width: 250px;
-  margin-top: 20px;
+  background-color: var(--searchtab-bg-color);
+  color: var(--text-color);
+  font-size: var(--font-size);
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 0.5em;
+  text-align: center;
   transition: background-color 0.2s;
-  color: white;
-  font-size: 15px;
 
   &:focus {
-    background-color: #303030;
+    background-color: var(--searchtab-bg-color-focus);
   }
 `;
 
 const SearchTab = ({ value, setSearchTerm }) => (
-  <Input
-    type="text"
-    value={value}
-    onChange={(event) => setSearchTerm(event.target.value)}
-  />
+  <Input type='text' value={value} onChange={(event) => setSearchTerm(event.target.value)} />
 );
 
 SearchTab.propTypes = {

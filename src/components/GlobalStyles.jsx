@@ -1,23 +1,32 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
+  :root {
+    --primary-color: #303030;
+    --secondary-color: #202020;
+    
+    --font-size: 1rem;
+    --text-color: #ffffff;
+
+    --link-color: #ffffff;
+    --link-color-hover: #ffd001;
+
+    --searchtab-bg-color: #303030;
+    --searchtab-bg-color-focus: #505050;
+  }
+
+
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: var(--font-size);
     font-family: 'Roboto', sans-serif;
-  }
-
-  html, body, #root {
-    width: 100%;
-    height: 100%;
-    background: #212121;
-    color: white;
-  }
-
-  #root {
-    display: flex;
-    flex-direction: column;
   }
 `;
 
